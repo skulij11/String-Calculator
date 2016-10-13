@@ -142,10 +142,10 @@ public class CalculatorTest {
 	}
 
 	
-	/*@Test
+	@Test
 	public void anotherDelimiterNegativeNumbersThrowException() {
 		thrown.expect(IllegalArgumentException.class);
-		thrown.expectMessage("Negatives not allowed: -4,-5");
-		Calculator.add("//,\n2,-4,3,-5");
-	}*/
+		thrown.expectMessage("Negatives not allowed: -4,-4,-5");
+		Calculator.add("//!\n2,-4!3!-4\n-5");
+	}
 }
