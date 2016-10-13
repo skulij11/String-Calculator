@@ -3,9 +3,7 @@ package is.ru.stringcalculator;
 public class Calculator {
 	
 	public static int add(String text) {
-		if(text.equals(""))
-			return 0;
-		else if(text.contains("-")) {
+		if(text.contains("-")) {
 			String exceptionMessage = makeExceptionMessage(text);
 			throw new IllegalArgumentException(exceptionMessage);
 		}	
@@ -52,7 +50,7 @@ public class Calculator {
 	private static int total(String[] numbers) {
 		int total = 0;
 		for(String num : numbers) {
-			if(toInt(num) > 1000)
+			if(num.equals("") || toInt(num) > 1000)
 				continue;
 			total += toInt(num);
 		}
