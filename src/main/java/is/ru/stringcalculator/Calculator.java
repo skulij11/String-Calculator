@@ -4,7 +4,7 @@ public class Calculator {
 	
 	private static String delimiter = "\n|,";
 
-	public static int add(String text){
+	public static int add(String text) {
 		if(text.equals(""))
 			return 0;
 		else if(text.contains("-")) {
@@ -12,11 +12,7 @@ public class Calculator {
 			throw new IllegalArgumentException(exceptionMessage);
 		}
 		else if(text.contains("//")) {
-			String[] splitString = text.split("//|\n");
-			String newDelimiter = splitString[1];
-
-			String[] numbers = splitString[2].split(newDelimiter);
-			return total(numbers);
+			return total(splitWithAnotherDelimiter(text));
 		}
 		else {
 			return total(splitNumbers(text));
@@ -40,12 +36,20 @@ public class Calculator {
 		return exception;
 	}
 	
-
 	private static int toInt(String text) {
 		return Integer.parseInt(text);
 	}
-	private static String[] splitNumbers(String numbers) {
-		return numbers.split(delimiter);
+	
+	private static String[] splitWithAnotherDelimiter(String text) {
+		String[] splitString = text.split("//|\n");
+		String newDelimiter = splitString[1];
+
+		String[] numbers = splitString[2].split(newDelimiter);
+		return numbers;
+	}
+
+	private static String[] splitNumbers(String text) {
+		return text.split(delimiter);
 	}
 	private static int total(String[] numbers) {
 		int total = 0;
