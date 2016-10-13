@@ -8,7 +8,21 @@ public class Calculator {
 		if(text.equals(""))
 			return 0;
 		else if(text.contains("-")) {
-			throw new IllegalArgumentException("Negatives not allowed: -1");
+			String[] numbers = splitNumbers(text);
+			String exception = "Negatives not allowed: ";
+			boolean alreadyNegative = false;
+
+			for(String num : numbers) {
+				if(toInt(num) < 0) {
+					if(alreadyNegative) 
+						exception += ",";
+						
+					exception += num;
+					alreadyNegative = true;
+				}
+					
+			}
+			throw new IllegalArgumentException(exception);
 		}
 		else if(text.contains(",") || text.contains("\n")) {
 			return total(splitNumbers(text));

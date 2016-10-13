@@ -60,10 +60,24 @@ public class CalculatorTest {
 	public	 ExpectedException thrown = ExpectedException.none();
 
 	@Test
-	public void negativeNumbersException() {
+	public void oneNegativeNumberThrowsException() {
 		thrown.expect(IllegalArgumentException.class);
 		thrown.expectMessage("Negatives not allowed: -1");
 		Calculator.add("-1,2");
+	}
+
+	@Test
+	public void moreThanOneNegativeNumbersThrowException() {
+		thrown.expect(IllegalArgumentException.class);
+		thrown.expectMessage("Negatives not allowed: -4,-5");
+		Calculator.add("2,-4,3,-5");
+	}
+
+	@Test
+	public void moreThanOne2NegativeNumbersThrowException() {
+		thrown.expect(IllegalArgumentException.class);
+		thrown.expectMessage("Negatives not allowed: -1,-2,-3");
+		Calculator.add("0,-1,-2,-3,1,2");
 	}
 
 }
