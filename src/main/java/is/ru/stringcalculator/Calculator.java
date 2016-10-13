@@ -11,6 +11,13 @@ public class Calculator {
 			String exceptionMessage = makeExceptionMessage(text);
 			throw new IllegalArgumentException(exceptionMessage);
 		}
+		else if(text.contains("//")) {
+			String[] splitString = text.split("//|\n");
+			String newDelimiter = splitString[1];
+
+			String[] numbers = splitString[2].split(newDelimiter);
+			return total(numbers);
+		}
 		else {
 			return total(splitNumbers(text));
 		}		

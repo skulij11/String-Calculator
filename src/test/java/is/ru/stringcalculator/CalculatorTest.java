@@ -101,4 +101,39 @@ public class CalculatorTest {
 		assertEquals(0, Calculator.add("1500"));
 	}
 
+	@Test
+	public void anotherDelimiter() {
+		assertEquals(3, Calculator.add("//;\n1;2"));
+	}
+
+	@Test
+	public void anotherDelimiter2() {
+		assertEquals(10, Calculator.add("//:\n2:5:3"));
+	}
+
+	@Test
+	public void anotherDelimiter3() {
+		assertEquals(12, Calculator.add("//a\n2a4a6"));
+	}
+
+	@Test
+	public void anotherDelimiter4() {
+		assertEquals(12, Calculator.add("//\\+\n2+4+6"));
+	}
+
+	@Test
+	public void anotherDelimiter5() {
+		assertEquals(22, Calculator.add("//\\*\n2*4*6*10"));
+	}
+
+	@Test
+	public void anotherDelimiter6() {
+		assertEquals(22, Calculator.add("//\\?\n2?4?6?10"));
+	}
+
+	@Test
+	public void anotherDelimiterIgnoreOver1000() {
+		assertEquals(12, Calculator.add("//#\n2#4#6#2000"));
+	}
+
 }
