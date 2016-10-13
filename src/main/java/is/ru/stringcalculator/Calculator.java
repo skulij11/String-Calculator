@@ -7,13 +7,14 @@ public class Calculator {
 	public static int add(String text) {
 		if(text.equals(""))
 			return 0;
+		else if(text.startsWith("//")) {
+			return total(splitWithAnotherDelimiter(text));
+		}
 		else if(text.contains("-")) {
 			String exceptionMessage = makeExceptionMessage(text);
 			throw new IllegalArgumentException(exceptionMessage);
 		}
-		else if(text.startsWith("//")) {
-			return total(splitWithAnotherDelimiter(text));
-		}
+		
 		else {
 			return total(splitNumbers(text));
 		}		
@@ -41,16 +42,17 @@ public class Calculator {
 	}
 	
 	private static String[] splitWithAnotherDelimiter(String text) {
-		String[] splitString = text.split("//|\n");
-		String newDelimiter = splitString[1];
+		String[] splitString = text.substring(2).split("\n", 2);
+		String newDelimiter = splitString[0];
 
-		String[] numbers = splitString[2].split(newDelimiter);
+		String[] numbers = splitString[1].split(newDelimiter + "|" + delimiter);
 		return numbers;
 	}
 
 	private static String[] splitNumbers(String text) {
 		return text.split(delimiter);
 	}
+	
 	private static int total(String[] numbers) {
 		int total = 0;
 		for(String num : numbers) {

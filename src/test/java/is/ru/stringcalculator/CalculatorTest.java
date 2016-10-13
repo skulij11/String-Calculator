@@ -136,4 +136,16 @@ public class CalculatorTest {
 		assertEquals(12, Calculator.add("//#\n2#4#6#2000"));
 	}
 
+	@Test
+	public void anotherDelimiterIgnoreOver10002() {
+		assertEquals(17, Calculator.add("//#\n2#4,6\n3#2#3000"));
+	}
+
+	
+	/*@Test
+	public void anotherDelimiterNegativeNumbersThrowException() {
+		thrown.expect(IllegalArgumentException.class);
+		thrown.expectMessage("Negatives not allowed: -4,-5");
+		Calculator.add("//,\n2,-4,3,-5");
+	}*/
 }
