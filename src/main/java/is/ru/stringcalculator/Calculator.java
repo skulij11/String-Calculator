@@ -44,6 +44,8 @@ public class Calculator {
 	private static int total(String[] numbers) {
 		int total = 0;
 		for(String num : numbers) {
+			if(toInt(num) > 1000)
+				continue;
 			total += toInt(num);
 		}
 		return total;

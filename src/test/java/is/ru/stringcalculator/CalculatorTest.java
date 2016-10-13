@@ -80,4 +80,20 @@ public class CalculatorTest {
 		Calculator.add("0,-1,-2,-3,1,2");
 	}
 
+	@Test
+	public void ignoreOver1000() {
+		assertEquals(2, Calculator.add("1001,2"));
+	}
+	
+	@Test
+	public void ignore2Over1000() {
+		assertEquals(1003, Calculator.add("1001,1000,3"));
+	}
+
+	
+	@Test
+	public void ignore3Over1000() {
+		assertEquals(0, Calculator.add("2000,1500"));
+	}
+
 }
