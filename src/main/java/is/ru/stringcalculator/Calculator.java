@@ -11,10 +11,9 @@ public class Calculator {
 			String exceptionMessage = makeExceptionMessage(text);
 			throw new IllegalArgumentException(exceptionMessage);
 		}
-		else if(text.contains(",") || text.contains("\n")) {
+		else {
 			return total(splitNumbers(text));
 		}		
-		else return toInt(text);
     }
 
 	private static String makeExceptionMessage(String text) {

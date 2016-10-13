@@ -96,4 +96,9 @@ public class CalculatorTest {
 		assertEquals(0, Calculator.add("2000,1500"));
 	}
 
+	@Test
+	public void ignore4Over1000() {
+		assertEquals(0, Calculator.add("1500"));
+	}
+
 }
